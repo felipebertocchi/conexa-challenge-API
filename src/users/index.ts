@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.use('/users', usersRoutes);
+app.use('/api/users', usersRoutes);
 
 app.listen(port, () => {
     return console.log(`[users] service running on http://localhost:${port}`);

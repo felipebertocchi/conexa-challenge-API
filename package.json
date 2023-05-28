@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "users": "nodemon --config nodemon.json src/users/index.ts"
+    "users": "nodemon --config nodemon.json src/users/index.ts",
+    "business": "nodemon --config nodemon.json src/business/index.ts"
   },
   "keywords": [],
   "author": "Felipe Bertocchi",

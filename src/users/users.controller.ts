@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 
 const UsersController = {
     registerUser: async (req: Request, res: Response) => {
@@ -37,9 +38,11 @@ const UsersController = {
                 return res.status(401).json({ error: 'Contraseña incorrecta' });
             }
 
-            res.json({});
+            const token = jwt.sign({ email }, <string>process.env.JWT_KEY, { expiresIn: '1h' });
+
+            return res.json({ token });
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error al intentar iniciar sesión' });
+            return res.status(500).json({ error: 'Hubo un error al intentar iniciar sesión' });
         }
     },
 };

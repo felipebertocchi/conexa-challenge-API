@@ -24,6 +24,24 @@ const UsersController = {
             return res.status(500).json({ error: 'Hubo un error al intentar registrar el usuario' });
         }
     },
+    loginUser: async (req: Request, res: Response) => {
+        const { email, password } = req.body;
+
+        try {
+            const dbUser = await UserModel.findOne({ email });
+            if (!dbUser) {
+                return res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+
+            if (!bcrypt.compareSync(password, dbUser.password)) {
+                return res.status(401).json({ error: 'Contraseña incorrecta' });
+            }
+
+            res.json({});
+        } catch (error) {
+            res.status(500).json({ error: 'Hubo un error al intentar iniciar sesión' });
+        }
+    },
 };
 
 export default UsersController;

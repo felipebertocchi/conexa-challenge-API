@@ -45,6 +45,11 @@ const UsersController = {
             return res.status(500).json({ error: 'Hubo un error al intentar iniciar sesión' });
         }
     },
+    listUsers: async (req: Request, res: Response) => {
+        // TODO: integrar con endpoint 4 en módulo de negocios
+    
+        res.json({});
+    }
 };
 
 export default UsersController;

@@ -1,14 +1,20 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
 
+interface ListUsersQueryParams {
+    page?: number;
+    limit?: number;
+    search?: string;
+}
+
 const BusinessController = {
     listUsers: async (req: Request, res: Response) => {
-        const page = parseInt(req.query.page as string) as number
-        const limit = parseInt(req.query.limit as string) as number
+        const { page = 1, limit = 10, search = '' }: ListUsersQueryParams = req.query;
+        const searchRegex = new RegExp(search, 'i');
 
         try {
             const dbUsers = await UserModel
-                .find({})
+                .find({ email: searchRegex })
                 .skip((page - 1) * limit)
                 .limit(limit);
 

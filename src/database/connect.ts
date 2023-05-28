@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const dbURI = 'mongodb://localhost:27017/conexa-challenge-api';
+const dbURI = <string>process.env.MONGODB_URI;
 
 mongoose.connect(dbURI)
     .then(() => {

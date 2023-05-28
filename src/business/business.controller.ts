@@ -20,7 +20,7 @@ const BusinessController = {
 
             return res.json({ usuarios: dbUsers });
         } catch (error) {
-            res.status(500).json({ error: 'Hubo un error al intentar listar los usuarios' });
+            return res.status(500).json({ error: 'Hubo un error al intentar listar los usuarios' });
         }
     }
 };

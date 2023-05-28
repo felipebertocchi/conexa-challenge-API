@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
+import axios from 'axios';
 
 const UsersController = {
     registerUser: async (req: Request, res: Response) => {
@@ -46,9 +47,24 @@ const UsersController = {
         }
     },
     listUsers: async (req: Request, res: Response) => {
-        // TODO: integrar con endpoint 4 en módulo de negocios
-    
-        res.json({});
+        const { page, limit, search } = req.query;
+
+        try {
+            const response = await axios.get(<string>process.env.BUSINESS_DOMAIN + '/api/business/users', {
+                headers: {
+                    Authorization: req.headers.authorization
+                },
+                params: {
+                    page,
+                    limit,
+                    search
+                }
+            });
+
+            return res.status(200).json(response.data);
+        } catch (error) {
+            return res.status(500).json({ error: 'Hubo un error al intentar listar los usuarios' });
+        }
     }
 };
 

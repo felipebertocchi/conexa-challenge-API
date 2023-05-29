@@ -23,6 +23,7 @@ const UsersController = {
 
             return res.status(200).json({ message: 'Usuario registrado exitosamente' });
         } catch (error) {
+            console.error(error)
             return res.status(500).json({ error: 'Hubo un error al intentar registrar el usuario' });
         }
     },
@@ -43,6 +44,7 @@ const UsersController = {
 
             return res.json({ token });
         } catch (error) {
+            console.error(error)
             return res.status(500).json({ error: 'Hubo un error al intentar iniciar sesión' });
         }
     },
@@ -64,6 +66,7 @@ const UsersController = {
 
             return res.status(200).json(response.data);
         } catch (error) {
+            console.error(error)
             return res.status(500).json({ error: 'Hubo un error al intentar listar los usuarios' });
         }
     }

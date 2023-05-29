@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken'
+import jwt, { Secret } from 'jsonwebtoken'
 import axios from 'axios';
 
 const UsersController = {
@@ -39,7 +39,7 @@ const UsersController = {
                 return res.status(401).json({ error: 'Contraseña incorrecta' });
             }
 
-            const token = jwt.sign({ email }, <string>process.env.JWT_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ email }, <Secret>process.env.JWT_KEY, { expiresIn: '1h' });
 
             return res.json({ token });
         } catch (error) {

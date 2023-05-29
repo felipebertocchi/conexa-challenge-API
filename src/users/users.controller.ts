@@ -52,7 +52,8 @@ const UsersController = {
         try {
             const response = await axios.get(<string>process.env.BUSINESS_DOMAIN + '/api/business/users', {
                 headers: {
-                    Authorization: req.headers.authorization
+                    Authorization: req.headers.authorization,
+                    Referer: req.headers.referer || `${process.env.USERS_DOMAIN}/api/users/list`
                 },
                 params: {
                     page,

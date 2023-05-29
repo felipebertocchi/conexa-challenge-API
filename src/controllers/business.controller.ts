@@ -1,15 +1,10 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
-
-interface ListUsersQueryParams {
-    page?: number;
-    limit?: number;
-    search?: string;
-}
+import { IListParams } from '../interfaces';
 
 const BusinessController = {
     listUsers: async (req: Request, res: Response) => {
-        const { page = 1, limit = 10, search = '' }: ListUsersQueryParams = req.query;
+        const { page = 1, limit = 10, search = '' }: IListParams = req.query;
         const searchRegex = new RegExp(search, 'i');
 
         try {

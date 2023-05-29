@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-import businessRoutes from './business.routes';
-import '../database/connect';
+import businessRoutes from './routes/business.routes';
+import './database/connect';
 
 const app = express();
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import BusinessController from './business.controller';
+import BusinessController from '../controllers/business.controller';
 import verifyToken from '../middleware/auth.middleware';
 import verifyReferer from '../middleware/referer.middleware';
 

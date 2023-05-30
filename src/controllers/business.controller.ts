@@ -10,6 +10,7 @@ const BusinessController = {
         try {
             const dbUsers = await UserModel
                 .find({ email: searchRegex })
+                .select({ email: 1 })
                 .skip((page - 1) * limit)
                 .limit(limit);
 

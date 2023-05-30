@@ -3,13 +3,17 @@ import mongoose from 'mongoose';
 const dbURI = <string>process.env.MONGODB_URI;
 
 function connect() {
-    mongoose.connect(dbURI)
-        .then(() => {
-            console.log('[mongodb] database connected');
-        })
-        .catch((error) => {
-            console.error('[mongodb] connection error:', error);
-        });
+    return new Promise<void>((resolve, reject) => {
+        mongoose.connect(dbURI)
+            .then(() => {
+                console.log('[mongodb] database connected');
+                resolve();
+            })
+            .catch((error) => {
+                console.error('[mongodb] connection error:', error);
+                reject();
+            });
+    })
 }
 
 function disconnect() {

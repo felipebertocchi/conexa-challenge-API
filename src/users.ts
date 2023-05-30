@@ -9,8 +9,8 @@ const app = express();
 app.use(express.json());
 app.use('/api/users', usersRoutes);
 
-const server = app.listen(process.env.USERS_PORT, () => {
-    mongo.connect();
+const server = app.listen(process.env.USERS_PORT, async () => {
+    await mongo.connect();
     return console.log(`[users] service running on port ${process.env.USERS_PORT}`);
 });
 

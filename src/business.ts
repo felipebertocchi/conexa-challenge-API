@@ -9,8 +9,8 @@ const app = express();
 app.use(express.json());
 app.use('/api/business', businessRoutes);
 
-const server = app.listen(process.env.BUSINESS_PORT, () => {
-    mongo.connect();
+const server = app.listen(process.env.BUSINESS_PORT, async () => {
+    await mongo.connect();
     return console.log(`[business] service running on port ${process.env.BUSINESS_PORT}`);
 });
 

@@ -6,6 +6,7 @@
     "users": "nodemon --config nodemon.json src/users.ts",
     "business": "nodemon --config nodemon.json src/business.ts",
     "test": "jest --config ./jest.config.ts",
+    "test:cov": "jest --coverage --config ./jest.config.ts",
     "build": "npm install && tsc",
     "start:users": "node ./build/users.js",
     "start:business": "node ./build/business.js"

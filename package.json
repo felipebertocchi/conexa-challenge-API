@@ -7,8 +7,8 @@
     "business": "nodemon --config nodemon.json src/business.ts",
     "test": "jest --config ./jest.config.ts",
     "build": "npm install && tsc",
-    "start:users": "./build/users.js",
-    "start:business": "./build/business.js"
+    "start:users": "node ./build/users.js",
+    "start:business": "node ./build/business.js"
   },
   "keywords": [],
   "author": "Felipe Bertocchi",

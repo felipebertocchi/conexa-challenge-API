@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import UserModel from '../models/UserModel';
+import jwtService from '../services/jwt.service';
 import bcrypt from 'bcrypt';
-import jwt, { Secret } from 'jsonwebtoken'
 import axios from 'axios';
 
 const UsersController = {
@@ -40,9 +40,9 @@ const UsersController = {
                 return res.status(401).json({ error: 'Contraseña incorrecta' });
             }
 
-            const token = jwt.sign({ email }, <Secret>process.env.JWT_KEY, { expiresIn: '1h' });
+            const token = jwtService.getToken(email);
 
-            return res.json({ token });
+            return res.status(200).json({ token });
         } catch (error) {
             console.error(error)
             return res.status(500).json({ error: 'Hubo un error al intentar iniciar sesión' });

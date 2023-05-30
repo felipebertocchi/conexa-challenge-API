@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt, { Secret } from 'jsonwebtoken';
+import jwtService from '../services/jwt.service';
 
 const verifyToken = (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization?.split(' ')[1];
@@ -9,7 +9,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
     }
 
     try {
-        jwt.verify(token, <Secret>process.env.JWT_KEY);
+        jwtService.verifyToken(token);
         next();
     } catch (error) {
         return res.status(401).json({ error: 'Token de autenticación inválido' });

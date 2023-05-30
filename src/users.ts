@@ -11,7 +11,7 @@ app.use('/api/users', usersRoutes);
 
 const server = app.listen(process.env.USERS_PORT, () => {
     mongo.connect();
-    return console.log(`[users] service running on ${process.env.USERS_DOMAIN}`);
+    return console.log(`[users] service running on port ${process.env.USERS_PORT}`);
 });
 
 export { app, server }

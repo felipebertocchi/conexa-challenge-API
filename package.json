@@ -5,7 +5,10 @@
   "scripts": {
     "users": "nodemon --config nodemon.json src/users.ts",
     "business": "nodemon --config nodemon.json src/business.ts",
-    "test": "jest --config ./jest.config.ts"
+    "test": "jest --config ./jest.config.ts",
+    "build": "npm install && tsc",
+    "start:users": "./build/users.js",
+    "start:business": "./build/business.js"
   },
   "keywords": [],
   "author": "Felipe Bertocchi",

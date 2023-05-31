@@ -102,12 +102,12 @@ Podemos usar [Postman](https://www.postman.com/) para realizar peticiones a cada
 ## Endpoints
 A continuación se muestran los endpoints creados para este proyecto
 
-#### Endpoints microservicio de log in
+### Endpoints microservicio de log in
 La ruta base para el microservicio es la siguiente:
 
 `http://localhost:3000`
 
-### POST /api/users/register
+#### POST /api/users/register
 > Registro de usuario con email y contraseña
 
 requiere que el body tenga lo siguiente:
@@ -118,7 +118,7 @@ requiere que el body tenga lo siguiente:
 }
 ```
 
-### POST /api/users/login
+#### POST /api/users/login
 > Login de usuario con email y contraseña <br>
 > Devuelve un token de autenticación que expira en una hora y se puede usar en el siguiente endpoint
 
@@ -130,21 +130,42 @@ requiere que el body tenga lo siguiente:
 }
 ```
 
-### GET /api/users/list
+#### GET /api/users/list
 > Devuelve una lista de emails de usuarios registrados en la aplicación <br>
 > Require de un token de autenticación en el header Authorization:
 
-Desde la pestaña Authorization en Postman, elegir el tipo "Bearer Token" e ingresar el token provisto en el endpoint anterior.
+Desde la pestaña Authorization en **Postman**, elegir el tipo "Bearer Token" e ingresar el token provisto en el endpoint anterior.
+
+##### Query params:
+> Se puede agregar estos parámetros para hacer una busqueda de usuario por su email, o bien modificar la cantidad de usuarios mostradas en la lista o cambiar de página.
+
+| Key    	| Value (default) 	| Required 	| 
+|--------	|-----------------	|----------	|
+| page   	| 1               	| Optional 	|
+| limit  	| 10              	| Optional 	| 
+| search 	| ' '              	| Optional 	|
+
+Por ej:
+```
+# mostrar usuarios cuyo mail contenga "ale" (case-insensitive)
+/api/users/list?search=ale
+
+# mostrar hasta un máximo de 15 usuarios por página
+/api/users/list?limit=15
+
+# mostrar la segunda página, limitando usuarios mostrados a 3 por página
+/api/users/list?page=2&limit=3
+```
 
 ---
 
-#### Endpoints microservicio de negocios
+### Endpoints microservicio de negocios
 
 La ruta base para el microservicio es la siguiente:
 
 `http://localhost:4000`
 
-### GET /api/business/users
+#### GET /api/business/users
 > No es accesible directamente <br>
 > Aunque se le provea un token de autenticación, devolverá un mensaje de error.
 

@@ -15,7 +15,7 @@ Una aplicación de backend que permite registrar y loguear usuarios con contrase
 - [Endpoints](#endpoints)
 - [Testing](#testing)
 - [Live Demo](#live-demo)
-- [Contribuciones](#contribuciones)
+- [Contribuir](#contribuir)
 - [Contacto](#contacto)
 
 ---

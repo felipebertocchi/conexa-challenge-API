@@ -12,7 +12,7 @@ Una aplicación de backend que permite registrar y loguear usuarios con contrase
   - [Requisitos](#prerrequisitos)
   - [Variables de entorno](#variables-de-entorno)
   - [Setup del proyecto](#setup-del-proyecto)
-  - [Ejecutar la app](#ejecutar-la-app)
+  - [Ejecutar las app](#ejecutar-las-app)
 - [Endpoints](#endpoints)
 - [Testing](#testing)
 - [Live Demo](#live-demo)

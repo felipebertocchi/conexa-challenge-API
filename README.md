@@ -47,8 +47,8 @@ Luego instala todas las dependencias
 ### Variables de entorno
 
 Para ejecutar este proyecto, se requiere tener un archivo '.env' ubicado en la raíz del mismo con estos parámetros:
-  ```bash
-  MONGODB_URI=mongodb://localhost:27017/api-local
+  ```
+  MONGODB_URI=mongodb+srv://fabertocchi:uix1vxs8DgDkNJ9f@cluster0.lyjiuva.mongodb.net/prod?retryWrites=true&w=majority
 
   JWT_KEY=YT2wh5dIBw9mX1AjS2hob2tyY
 
@@ -58,10 +58,18 @@ Para ejecutar este proyecto, se requiere tener un archivo '.env' ubicado en la r
   BUSINESS_DOMAIN=http://localhost:4000
   BUSINESS_PORT=4000
   ```
+  
+En caso de querer usar MongoDB de forma local, pueden usar:
+  ```
+  MONGODB_URI=mongodb://localhost:27017/api-test
+  ```
+
+ <br>
 
 También será necesario otro archivo pero este se llamará '.env.test.local' con lo siguiente:
-  ```bash
-  MONGODB_URI=mongodb://localhost:27017/api-test
+  ```
+  MONGODB_URI=mongodb+srv://fabertocchi:uix1vxs8DgDkNJ9f@cluster0.lyjiuva.mongodb.net/test?retryWrites=true&w=majority
+  
 
   JWT_KEY=YT2wh5dIBw9mX1AjS2hob2tyY
 
@@ -71,6 +79,12 @@ También será necesario otro archivo pero este se llamará '.env.test.local' co
   BUSINESS_DOMAIN=http://localhost:4000
   BUSINESS_PORT=4000
   ```
+
+En caso de querer usar MongoDB de forma local, pueden usar:
+  ```
+  MONGODB_URI=mongodb://localhost:27017/api-test
+  ```
+ <br>
 
 Si todo marcha bien, debería aparecer esto en la consola:
 
